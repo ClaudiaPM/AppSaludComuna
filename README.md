@@ -1,4 +1,4 @@
-<h1 align="center">  # AppSaludComuna </h1>
+<h1 align="center"> AppSaludComuna </h1>
 
 
 This is a group project in development with the aim of participating in the Hackaton program
