@@ -27,6 +27,8 @@ Correr el proyecto
 
 *-----npm run dev-----*
 <h1 align="center"> Hackaton SaludJEBCA </h1>
+![image](https://github.com/ClaudiaPM/Hackaton_SaludJEBCA/assets/37117102/b2202248-fc4f-4c15-b171-6bb79f760006)
+
 
 
 This is a group project in development with the aim of participating in the Hackaton program
