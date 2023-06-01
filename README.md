@@ -61,7 +61,7 @@ This is a group project in development with the aim of participating in the Hack
 
 
 <h1>Estado del proyecto:</h1>
-  :construction: Proyecto en construcción :construction:
+  :construction: Proyecto en construcción, BACKEND :construction:
   
   
   
