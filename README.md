@@ -3,7 +3,7 @@
 # Dependencias
 
 * cors npm i cors
-* dotenv npm i dotenv
+* dotenv npm i dotenvnodemon
 * express npm i express
 * mongoose npm i mongoose
 * multer npm i multer
@@ -12,9 +12,10 @@
 * npm i mongoose-delete  -S eliminado logico
 
 
-para generar un nueva llave jwt debes de tener creado tu archivo .env en la razi principal de tu proyecto
+para generar un nueva llave jwt debes de tener creado tu archivo .env en la raiz principal de tu proyecto
 
 y luego correr este comando
+
 npm run jwt:secret
 
 
