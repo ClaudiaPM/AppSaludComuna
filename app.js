@@ -11,7 +11,7 @@ app.use(express.static("storage"));
 
 app.use("/api", require("./routes"));
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
   console.log(`Server is running on port: http://localhost:${port}`);
