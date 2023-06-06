@@ -7,15 +7,12 @@ const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerDefinition = {
   openapi: "3.0.0",
   info: {
-    title: "Documentacion de mi API Curso de Node REST",
+    title: "Documentacion de la API Hackaton 2023",
     version: "1.0.1",
   },
   servers: [
     {
       url: "http://localhost:3001/api",
-    },
-    {
-      url: "https://afternoon-journey-32165.herokuapp.com/api",
     },
   ],
   components: {
