@@ -9,7 +9,9 @@ const {
 
 const validarEmail = async (req, res, next) => {
   const { email } = req.body;
-  const find_email = await UsersModels.findOne({ email: email });
+  const find_email = await UsersModels.findOne({
+    where: { email: email },
+  });
   if (find_email) {
     response(retError, "El email ya existe en la base de datos", res);
   } else {

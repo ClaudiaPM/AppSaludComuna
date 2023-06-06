@@ -7,7 +7,7 @@ const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerDefinition = {
   openapi: "3.0.0",
   info: {
-    title: "Documentacion de mi API  Hackaton 2023",
+    title: "Documentacion de mi API Curso de Node REST",
     version: "1.0.1",
   },
   servers: [
@@ -23,6 +23,38 @@ const swaggerDefinition = {
       bearerAuth: {
         type: "http",
         scheme: "bearer",
+      },
+    },
+    schemas: {
+      authLogin: {
+        type: "object",
+        required: ["email", "password"],
+        properties: {
+          email: {
+            type: "string",
+          },
+          password: {
+            type: "string",
+          },
+        },
+      },
+      authRegister: {
+        type: "object",
+        required: ["email", "password", "age", "name"],
+        properties: {
+          name: {
+            type: "string",
+          },
+          age: {
+            type: "integer",
+          },
+          email: {
+            type: "string",
+          },
+          password: {
+            type: "string",
+          },
+        },
       },
     },
   },

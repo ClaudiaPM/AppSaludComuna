@@ -21,10 +21,6 @@ const register = async (req, res) => {
       email: email,
       password: hash,
     });
-   // response(retOK, data, res);
-
-
-    //quiero que cuando regrese la data del usuario no venga la password
     data.password = undefined;
     const token = await generateToken(data);
     response(retOK, token, res);
@@ -37,19 +33,18 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   req = matchedData(req);
 
-  // res.send(req)
 
   const { email, password } = req;
-  // response(retOK, email, res);
 
-  const validate_email = await UsersModels.findOne({ email: email });
+  const validate_email = await UsersModels.findOne({
+    where: { email: email },
+  });
   if (!validate_email) {
     response(retNotFound, "El email no existe en la base de datos", res);
     return;
   }
 
   const validate_password = await compare(password, validate_email.password);
-
   if (!validate_password) {
     response(retError, "La contraseña es incorrecta", res);
     return;

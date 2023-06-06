@@ -36,7 +36,7 @@ const { register, login } = require("../controllers/AuthController");
  *                  '403':
  *                      description: Error por validacion
  */
-router.post("/register", validatorRegister, register);
+router.post("/register", validatorRegister, validarEmail, register);
 
 /**
  * Todo : ruta para iniciar sesión
