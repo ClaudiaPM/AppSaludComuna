@@ -70,6 +70,7 @@ CREATE TABLE Inventario(
   idinventario INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(75) NOT NULL,
   stock INT NOT NULL,
+  stock_actual INT NULL,
   fecha_ingreso DATE NOT NULL,
   idmedicamento INT NOT NULL,
   PRIMARY KEY (idinventario),
@@ -86,9 +87,10 @@ CREATE TABLE Establecimientos_Medicos(
   idestablecimiento_medico INT NOT NULL AUTO_INCREMENT,
   nombre_establecimiento VARCHAR(75) NOT NULL,
   direccion VARCHAR(75) NOT NULL,
-  horario DATE NOT NULL,
-  cantidad_personal INT NOT NULL,
-  cantidad_usuarios INT NOT NULL,
+  horario_apertura DATE NOT NULL,
+  horario_cierre DATE NOT NULL,
+  cantidad_personal INT NULL,
+  cantidad_usuarios INT NULL,
   idinventario INT NOT NULL,
   PRIMARY KEY (idestablecimiento_medico),
   FOREIGN KEY(idinventario) REFERENCES Inventario(idinventario)
@@ -199,7 +201,7 @@ CREATE TABLE Citas(
 -- -----------------------------------------------------
 -- Table `Roles_Usuarios`
 -- -----------------------------------------------------
-CREATE TABLE Roles_Usuarios(
+CREATE TABLE Roles(
   idrol INT NOT NULL AUTO_INCREMENT,
   nombre_rol VARCHAR(45) NOT NULL,
   nivel INT NOT NULL,
@@ -216,17 +218,6 @@ CREATE TABLE Especialidades(
   idespecialidad INT NOT NULL AUTO_INCREMENT,
   especialidad_medica VARCHAR(50) NOT NULL,
   PRIMARY KEY(idespecialidad)
-);
-
-
--- -----------------------------------------------------
--- Table `Roles_Personal`
--- -----------------------------------------------------
-CREATE TABLE Roles_Personal(
-  idrol INT NOT NULL AUTO_INCREMENT,
-  nombre VARCHAR(45) NOT NULL,
-  nivel INT NOT NULL,
-  PRIMARY KEY(idrol)
 );
 
 
@@ -263,7 +254,7 @@ CREATE TABLE Personal(
   PRIMARY KEY(idpersonal),
   FOREIGN KEY(idestablecimiento) REFERENCES Establecimientos_Medicos(idestablecimiento_medico),
   FOREIGN KEY(idespecialidad) REFERENCES Especialidades(idespecialidad),
-  FOREIGN KEY(idrol) REFERENCES Roles_Personal(idrol),
+  FOREIGN KEY(idrol) REFERENCES Roles(idrol),
   FOREIGN KEY(idhorario) REFERENCES Horarios(idhorario)
 );
 
@@ -319,11 +310,11 @@ CREATE TABLE Usuarios(
   idparentesco INT NOT NULL,
   idcomunidad INT NOT NULL,
   idhistorial_usuario INT NOT NULL,
-  idrol_usuario INT NOT NULL,
+  idrol INT NOT NULL,
   PRIMARY KEY(idusuario),
   FOREIGN KEY(idtipo_sangre) REFERENCES Tipos_Sangre(idtipo_sangre),
   FOREIGN KEY(idparentesco) REFERENCES Parentescos (idparentesco),
   FOREIGN KEY (idcomunidad) REFERENCES Comunidades(idcomunidades),
   FOREIGN KEY (idhistorial_usuario) REFERENCES Historial_Usuarios(idhistorial_usuario),
-  FOREIGN KEY (idrol_usuario) REFERENCES Roles_Usuarios(idrol)
+  FOREIGN KEY (idrol) REFERENCES Roles(idrol)
 );
