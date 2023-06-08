@@ -87,8 +87,10 @@ CREATE TABLE Establecimientos_Medicos(
   idestablecimiento_medico INT NOT NULL AUTO_INCREMENT,
   nombre_establecimiento VARCHAR(75) NOT NULL,
   direccion VARCHAR(75) NOT NULL,
-  horario_apertura DATE NOT NULL,
-  horario_cierre DATE NOT NULL,
+  -- horario_apertura DATE NOT NULL,
+  -- horario_cierre DATE NOT NULL,
+  horario_apertura TIME NOT NULL,
+  horario_cierre TIME NOT NULL,
   cantidad_personal INT NULL,
   cantidad_usuarios INT NULL,
   idinventario INT NOT NULL,
@@ -230,6 +232,8 @@ CREATE TABLE Horarios(
   idhorario INT NOT NULL AUTO_INCREMENT,
   horario_entrada DATE NOT NULL,
   horario_salida DATE NOT NULL,
+  hora_entrada TIME NOT NULL,
+  hora_salida TIME NOT NULL,
   cupos INT NOT NULL,
   PRIMARY KEY(idhorario)
 );
