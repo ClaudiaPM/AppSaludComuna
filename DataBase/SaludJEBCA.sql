@@ -53,6 +53,7 @@ CREATE TABLE Comunidades(
 CREATE TABLE Medicamentos(
   idmedicamento INT NOT NULL AUTO_INCREMENT,
   nombre_medicamento VARCHAR(75) NOT NULL,
+  cantidad INT NOT NULL,
   modo_uso VARCHAR(75) NOT NULL,
   tiempo_uso VARCHAR(35) NOT NULL,
   efectos VARCHAR(75),
