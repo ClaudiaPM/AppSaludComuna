@@ -180,6 +180,7 @@ CREATE TABLE Cirugias(
   idcirugia INT NOT NULL AUTO_INCREMENT,
   nombre_cirugia VARCHAR(75) NOT NULL,
   fecha DATE NOT NULL,
+  hora TIME NOT NULL,
   PRIMARY KEY(idcirugia)
 );
 
@@ -230,8 +231,8 @@ CREATE TABLE Especialidades(
 -- -----------------------------------------------------
 CREATE TABLE Horarios(
   idhorario INT NOT NULL AUTO_INCREMENT,
-  horario_entrada DATE NOT NULL,
-  horario_salida DATE NOT NULL,
+  horario_entrada DATE NULL,
+  horario_salida DATE NULL,
   hora_entrada TIME NOT NULL,
   hora_salida TIME NOT NULL,
   cupos INT NOT NULL,
