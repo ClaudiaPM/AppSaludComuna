@@ -71,7 +71,6 @@ CREATE TABLE Inventario(
   idinventario INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(75) NOT NULL,
   stock INT NOT NULL,
-  stock_actual INT NULL,
   fecha_ingreso DATE NOT NULL,
   idmedicamento INT NOT NULL,
   PRIMARY KEY (idinventario),
