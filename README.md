@@ -67,3 +67,8 @@ This is a group project in development with the aim of participating in the Hack
   
   
   <h1>Desarrolladores:</h1>
+  <p>Claudia Iliana Padilla,</p>
+  <p>Julio Pineda,</p>
+  <p>Edwin Santos,</p>
+  <p>Cristian Alexis Garcia,</p>
+  <p>Brandon Rodriguez</p>
