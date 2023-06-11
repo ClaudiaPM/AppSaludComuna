@@ -14,6 +14,9 @@ CREATE TABLE Roles(
 );
 
 
+
+
+
 -- -----------------------------------------------------
 -- Table `Generos`
 -- -----------------------------------------------------
@@ -22,6 +25,8 @@ CREATE TABLE Generos(
   tipoGenero VARCHAR(45) NOT NULL,
   PRIMARY KEY(idgenero)
 );
+
+
 
 
 
@@ -49,6 +54,8 @@ CREATE TABLE Usuarios(
 
 
 
+
+
 -- -----------------------------------------------------
 -- Table `Departamentos`
 -- -----------------------------------------------------
@@ -57,6 +64,9 @@ CREATE TABLE Departamentos(
   nombre VARCHAR(75) NOT NULL,
   PRIMARY KEY(iddepartamento)
 );
+
+
+
 
 
 
@@ -70,6 +80,7 @@ CREATE TABLE Municipios(
   PRIMARY KEY(idmunicipio),
   FOREIGN KEY (iddepartamento) REFERENCES Departamentos(iddepartamento)
 );
+
 
 
 
@@ -90,6 +101,7 @@ CREATE TABLE Comunidades(
   -- FOREIGN KEY (idpais) REFERENCES Paises(idpais),
   FOREIGN KEY (idmunicipio) REFERENCES Municipios(idmunicipio)
  );
+
 
 
 
@@ -129,6 +141,29 @@ CREATE TABLE Consultorios(
 
 
 
+
+
+-- -----------------------------------------------------
+-- Table `ConsultoriosDetalle`
+-- -----------------------------------------------------
+CREATE TABLE ConsultoriosDetalle(
+  idconsultorioDetalle INT NOT NULL AUTO_INCREMENT,
+  idconsultorio INT NOT NULL,
+  -- idpaciente INT NOT NULL,
+  -- idmedico INT NOT NULL,
+  cantidad_medicos INT NULL,
+  cantidad_pacientes INT NULL,
+  PRIMARY KEY(idconsultorioDetalle), 
+  FOREIGN KEY (idconsultorio) REFERENCES Consultorios(idconsultorio)
+  -- FOREIGN KEY (idpaciente) REFERENCES Pacientes(idpaciente),
+  -- FOREIGN KEY (idmedico) REFERENCES Medicos(idmedico)
+);
+
+
+
+
+
+
 -- -----------------------------------------------------
 -- Table `Medicos`
 -- -----------------------------------------------------
@@ -141,6 +176,7 @@ CREATE TABLE Especialidades(
 
 
 
+
 -- -----------------------------------------------------
 -- Table `Medicos`
 -- -----------------------------------------------------
@@ -148,6 +184,7 @@ CREATE TABLE Medicos(
   idmedico INT NOT NULL AUTO_INCREMENT,
   idusuario INT NOT NULL,
   idespecialidad INT NOT NULL,
+  idconsultorioDetalle INT NOT NULL,
   -- idconsultorio INT NOT NULL,
   -- idhorario INT NOT NULL,
   activo INT NOT NULL,
@@ -156,8 +193,10 @@ CREATE TABLE Medicos(
   PRIMARY KEY(idmedico),
   FOREIGN KEY (idusuario) REFERENCES Usuarios(idusuario),
   -- FOREIGN KEY (idconsultorio) REFERENCES Consultorios(idconsultorio),
-  FOREIGN KEY (idespecialidad) REFERENCES Especialidades(idespecialidad)
+  FOREIGN KEY (idespecialidad) REFERENCES Especialidades(idespecialidad),
+  FOREIGN KEY (idconsultorioDetalle) REFERENCES ConsultoriosDetalle(idconsultorioDetalle)
 );
+
 
 
 
@@ -186,6 +225,7 @@ CREATE TABLE  Enfermedades(
   tratamiento VARCHAR(200) NULL,
   PRIMARY KEY(idenfermedad)
  );
+
 
 
 
@@ -232,6 +272,7 @@ CREATE TABLE Pacientes(
 	 idtipoSangre INT NOT NULL,
 	 -- idconsultorio INT NOT NULL,
      idgenero INT NOT NULL,
+     idconsultorioDetalle INT NOT NULL,
 	 idpadecimiento INT NOT NULL,
      padecimientos_general VARCHAR(250) NULL,
      nombre VARCHAR(75) NOT NULL,
@@ -250,32 +291,9 @@ CREATE TABLE Pacientes(
 	 FOREIGN KEY(idtipoSangre) REFERENCES TiposSangre(idtipoSangre),
      -- FOREIGN KEY (idconsultorio) REFERENCES Consultorios(idconsultorio),
 	 FOREIGN KEY (idgenero) REFERENCES Generos(idgenero),
-     FOREIGN KEY (idpadecimiento) REFERENCES Padecimientos(idpadecimiento)
+     FOREIGN KEY (idpadecimiento) REFERENCES Padecimientos(idpadecimiento),
+	 FOREIGN KEY (idconsultorioDetalle) REFERENCES ConsultoriosDetalle(idconsultorioDetalle)
 );
-
-
-
-
-
-
--- -----------------------------------------------------
--- Table `ConsultoriosDetalle`
--- -----------------------------------------------------
-CREATE TABLE ConsultoriosDetalle(
-  idconsultorioDetalle INT NOT NULL AUTO_INCREMENT,
-  idconsultorio INT NOT NULL,
-  idpaciente INT NOT NULL,
-  idmedico INT NOT NULL,
-  cantidad_medicos INT NULL,
-  cantidad_pacientes INT NULL,
-  PRIMARY KEY(idconsultorioDetalle), 
-  FOREIGN KEY (idconsultorio) REFERENCES Consultorios(idconsultorio),
-  FOREIGN KEY (idpaciente) REFERENCES Pacientes(idpaciente),
-  FOREIGN KEY (idmedico) REFERENCES Medicos(idmedico)
-);
-
-
-
 
 
 
@@ -432,17 +450,4 @@ INSERT INTO `procedimientos` (`id`, `nombre`, `descripcion`) VALUES
 (2, 'Cirugía de apéndice', 'Remoción quirúrgica del apéndice inflamado.');
 
 
-
-
-
-
-INSERT INTO `tipo_sangre` (`id`, `tipo`) VALUES
-(1, 'A+'),
-(2, 'A-'),
-(3, 'B+'),
-(4, 'B-'),
-(5, 'AB+'),
-(6, 'AB-'),
-(7, 'O+'),
-(8, 'O-');
 */
